@@ -1,24 +1,19 @@
 {
-  "label": "C/C++: gcc build active file",
-  "type": "cppbuild",
-  "command": "/usr/bin/gcc",
-  "args": [
-    "-Wall",
-    "-lm",
-    "-Wextra",
-    "-Wpedantic",
-    "-g",
-    "${file}",
-    "-o",
-    "${fileDirname}/${fileBasenameNoExtension}"
-  ],
-  "group": {
-    "kind": "build",
-    "isDefault": true
-  },
-  "problemMatcher": ["$gcc"],
-  "detail": "Task for building C files with strict warnings",
-  "options": {
-    "showOutput": "always"
-  }
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build and run active file",
+      "type": "shell",
+      "command": "/bin/bash",
+      "args": [
+        "-c",
+        "/usr/bin/gcc -Wall -Wextra -Wpedantic -g ${file} -o ${fileDirname}/${fileBasenameNoExtension} && ${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
 }
